@@ -2,15 +2,6 @@ import { ViewStyle } from "react-native";
 import { TextStyle } from "react-native";
 import { StyleProps } from "react-native-reanimated";
 
-export const COLORS = {
-    grey: '#5e5e5e',
-    navy: '#020085',
-    primary: '#0bb0e7',
-    red: '#e21f25',
-    secondary: '#ff5824',
-    white: '#fff',
-}
-
 interface IStyle {
     button: {
         primary: ViewStyle,
@@ -21,11 +12,22 @@ interface IStyle {
             default: TextStyle,
         }
         description: TextStyle,
+        error: TextStyle,
         subtitle: TextStyle,
         title: TextStyle,
     }
+    input: TextStyle,
     layout: StyleProps,
     signInPage: StyleProps;
+}
+
+export const COLORS = {
+    grey: '#5e5e5e',
+    navy: '#020085',
+    primary: '#0bb0e7',
+    red: '#e21f25',
+    secondary: '#ff5824',
+    white: '#fff',
 }
 
 export const styles: IStyle = {
@@ -52,7 +54,12 @@ export const styles: IStyle = {
         },
         description: {
             color: COLORS.grey,
-            fontSize: 18,
+            fontSize: 16,
+        },
+        error: {
+            color: 'red',
+            marginBottom: 16,
+            marginTop: 4,
         },
         subtitle: {
             fontSize: 25,
@@ -71,9 +78,17 @@ export const styles: IStyle = {
         height: '100%',
         width: '100%',
     },
+    input: {
+        fontSize: 16,
+        borderColor: COLORS.grey,
+        borderWidth: 1,
+        padding: 16,
+        borderRadius: 16,
+    },
     signInPage: {
         flex: 1,
         justifyContent: "center",
+        marginHorizontal: 'auto',
         width: '90%',
     }
 }
