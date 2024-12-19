@@ -1,3 +1,4 @@
+import { formatAmount } from "@/app/services";
 import { COLORS } from "@/app/style";
 import { ITransaction, TransactionTypes } from "@/app/transactions";
 import { Link } from "expo-router";
@@ -7,7 +8,7 @@ import { StyleProps } from "react-native-reanimated";
 export default function TransactionList(props: any) {
   return props.data.map((data: ITransaction, index: number) => (
     <Link
-      href="/transactions"
+      href={{ pathname: "/transactions/[id]", params: { id: data.id } }}
       key={data.id}
       style={{
         fontWeight: "bold",
@@ -16,7 +17,7 @@ export default function TransactionList(props: any) {
     >
       <View style={STYLE_CARD}>
         <View>
-          <Text style={STYLE_CARD_FONT.from}>{data.from}</Text>
+          <Text style={STYLE_CARD_FONT.from}>{data.object}</Text>
           <Text style={STYLE_CARD_FONT.description}>{data.description}</Text>
           <Text>{data.date.toLocaleString()}</Text>
         </View>
@@ -26,8 +27,8 @@ export default function TransactionList(props: any) {
             ...STYLE_CARD_FONT.amount,
             color:
               data.transactionType === TransactionTypes.IN
-                ? "#31cc65"
-                : "#cc3131",
+                ? COLORS.green
+                : COLORS.red,
           }}
         >
           {data.transactionType === TransactionTypes.IN ? "+" : "-"}RM{" "}
@@ -36,11 +37,6 @@ export default function TransactionList(props: any) {
       </View>
     </Link>
   ));
-}
-
-function formatAmount(value: number): string {
-  const formatter = new Intl.NumberFormat("en-US");
-  return formatter.format(value);
 }
 
 interface IStyleCardFonts {

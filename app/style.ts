@@ -21,6 +21,7 @@ interface IStyle {
 }
 
 export const COLORS = {
+    green: '#31cc65',
     grey: '#5e5e5e',
     navy: '#020085',
     primary: '#0bb0e7',
