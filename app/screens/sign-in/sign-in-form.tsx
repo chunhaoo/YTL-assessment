@@ -19,7 +19,7 @@ export default function SignInForm() {
     username: "",
   };
 
-  const onSignIn = () => router.replace("/home");
+  const onSignIn = () => router.replace("/transactions");
 
   return (
     <Formik

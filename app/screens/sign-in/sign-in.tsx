@@ -1,7 +1,7 @@
 import SignInForm from "@/app/screens/sign-in/sign-in-form";
 import { COLORS, styles } from "@/app/style";
 import * as Authenticator from "expo-local-authentication";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import {
   SafeAreaView,
   ScrollView,
@@ -32,58 +32,59 @@ export default function SignInScreen() {
       );
       return;
     }
-    router.replace("/home");
+    router.replace("/transactions");
   }
 
   return (
-    <SafeAreaView style={{ height: "100%", width: "100%" }}>
-      <ScrollView contentContainerStyle={styles.layout}>
-        <View style={styles.signInPage}>
-          <Text style={{ ...styles.font.title, marginBottom: 32 }}>
-            Welcome!
-          </Text>
+    <SafeAreaView style={styles.layout}>
+      <ScrollView
+        contentContainerStyle={{
+          ...styles.scrollView,
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ ...styles.font.title, marginBottom: 32 }}>Welcome!</Text>
 
-          <Text style={{ ...styles.font.description, marginBottom: 16 }}>
-            You may sign in with your username and password.
-          </Text>
+        <Text style={{ ...styles.font.description, marginBottom: 16 }}>
+          You may sign in with your username and password.
+        </Text>
 
-          <SignInForm></SignInForm>
+        <SignInForm></SignInForm>
 
-          {/* Separtor */}
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <View
-              style={{ flex: 1, height: 1, backgroundColor: COLORS.navy }}
-            ></View>
+        {/* Separtor */}
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View
+            style={{ flex: 1, height: 1, backgroundColor: COLORS.navy }}
+          ></View>
 
-            <View>
-              <Text
-                style={{
-                  marginVertical: 32,
-                  ...styles.font.subtitle,
-                  color: "#020085",
-                  fontWeight: "bold",
-                  width: 48,
-                  textAlign: "center",
-                }}
-              >
-                OR
-              </Text>
-            </View>
-
-            <View
-              style={{ flex: 1, height: 1, backgroundColor: COLORS.navy }}
-            ></View>
+          <View>
+            <Text
+              style={{
+                marginVertical: 32,
+                ...styles.font.subtitle,
+                color: "#020085",
+                fontWeight: "bold",
+                width: 48,
+                textAlign: "center",
+              }}
+            >
+              OR
+            </Text>
           </View>
 
-          <TouchableOpacity
-            style={styles.button.secondary}
-            onPress={onSignInWithHardwareAuthentication}
-          >
-            <Text style={styles.font.button.default}>
-              Sign In with Device Authentication
-            </Text>
-          </TouchableOpacity>
+          <View
+            style={{ flex: 1, height: 1, backgroundColor: COLORS.navy }}
+          ></View>
         </View>
+
+        <TouchableOpacity
+          style={styles.button.secondary}
+          onPress={onSignInWithHardwareAuthentication}
+        >
+          <Text style={styles.font.button.default}>
+            Sign In with Device Authentication
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );

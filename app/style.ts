@@ -1,12 +1,11 @@
-import { ViewStyle } from "react-native";
-import { TextStyle } from "react-native";
+import { TextStyle, ViewStyle } from "react-native";
 import { StyleProps } from "react-native-reanimated";
 
 interface IStyle {
     button: {
         primary: ViewStyle,
         secondary: ViewStyle,
-    },
+    };
     font: {
         button: {
             default: TextStyle,
@@ -15,10 +14,10 @@ interface IStyle {
         error: TextStyle,
         subtitle: TextStyle,
         title: TextStyle,
-    }
-    input: TextStyle,
-    layout: StyleProps,
-    signInPage: StyleProps;
+    };
+    input: TextStyle;
+    layout: StyleProps;
+    scrollView: StyleProps;
 }
 
 export const COLORS = {
@@ -43,6 +42,7 @@ export const styles: IStyle = {
             padding: 16,
         }
     },
+
     font: {
         button: {
             default: {
@@ -71,13 +71,6 @@ export const styles: IStyle = {
             fontWeight: 'bold',
         }
     },
-    layout: {
-        alignItems: 'center',
-        flex: 1,
-        fontSize: 16,
-        height: '100%',
-        width: '100%',
-    },
     input: {
         fontSize: 16,
         borderColor: COLORS.grey,
@@ -85,10 +78,17 @@ export const styles: IStyle = {
         padding: 16,
         borderRadius: 16,
     },
-    signInPage: {
+    layout: {
         flex: 1,
-        justifyContent: "center",
+        height: '100%',
+        width: '100%',
+    },
+    scrollView: {
+        textAlign: 'left',
+        flexGrow: 1,
+        fontSize: 16,
         marginHorizontal: 'auto',
+        paddingVertical: 32,
         width: '90%',
-    }
+    },
 }
